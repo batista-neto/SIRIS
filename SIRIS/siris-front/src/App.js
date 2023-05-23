@@ -1,12 +1,12 @@
 import Login from "./pages/login"
 import Adm from "./pages/adm"
-import './css/login.css'
-import './css/adm.css'
+import Cadastro from "./pages/cadastro"
+
 
 function App() {
   return (
     <div className="App">
-      <Adm/>
+      <Cadastro/>
     </div>
   );
 }
