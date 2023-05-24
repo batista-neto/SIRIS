@@ -7,7 +7,7 @@ function adm() {
                 <p2 id='idadm'>Matrícula</p2>
                 <p3 id='funcaoadm'>Função</p3>
                 <hr></hr>
-                <button id='buttonadm'>NOVO USUÁRIO</button>
+                <button type='button' id='buttonadm'>NOVO USUÁRIO</button>
             </div>
     )
 }

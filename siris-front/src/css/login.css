@@ -39,7 +39,7 @@
     border-radius: 45px;
 }
 
-#usernamelogin {
+#usernamelogin, #senhalogin {
     position: absolute;
     width: 530px;
     height: 40px;
@@ -47,29 +47,12 @@
     top: 240px;
 }
 
-#senhalogin {
-    position: absolute;
-    width: 530px;
-    height: 40px;
-    left: 35px;
-    top: 310px;
+#usernamelogin {
+    top: 240px;
 }
 
-p {
-position: absolute;
-left: 50%;
-top: 380px;
-transform: translate(-50%, -50%);
-font-family: 'IBM Plex Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 100%;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: -0.03em;
-color: #FFFFFF;
+#senhalogin {
+    top: 310px;
 }
 
 #invalid {

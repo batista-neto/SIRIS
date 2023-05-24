@@ -6,10 +6,9 @@ function Login() {
             <div id="login" className="box">
                 <h1>Faça seu Login</h1>
                 <p1 id='invalid'>Usuário ou senha inválidos</p1>
-                <input id="usernamelogin" placeHolder="USERNAME"></input>
-                <input id="senhalogin" placeHolder="SENHA"></input>
-                <button id='buttonlogin'>LOGIN</button>
-                <p>Esqueci minha senha</p>
+                <input type='text' id="usernamelogin" placeHolder="USERNAME"></input>
+                <input type='password' id="senhalogin" placeHolder="SENHA"></input>
+                <button type='submit' id='buttonlogin'>LOGIN</button>
             </div>
         </div>
     );
