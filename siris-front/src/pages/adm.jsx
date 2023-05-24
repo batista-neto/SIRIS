@@ -1,6 +1,6 @@
 import '../css/adm.css'
 
-function adm() {
+export const Adm = () => {
     return (
             <div id="admbox" className="box">
                 <p1 id='useradm'>Usuário</p1>
@@ -12,4 +12,3 @@ function adm() {
     )
 }
 
-export default adm;

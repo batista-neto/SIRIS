@@ -1,6 +1,6 @@
 import '../css/cadastro.css'
 
-function cadastro() {
+export const Cadastro = () => {
     return (
         <div id="adm" className="box">
             <h1>CADASTRAR</h1>
@@ -19,7 +19,5 @@ function cadastro() {
             <label id='funclabel'>OPERADOR</label>
            
         </div>
-    );
-}
-
-export default cadastro;
+    )
+};
