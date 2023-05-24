@@ -4,11 +4,13 @@ import Cadastro from "./pages/cadastro"
 
 
 function App() {
-  return (
-    <div className="App">
-      <Cadastro/>
-    </div>
-  );
+    return ( <
+        div className = "App" >
+        <
+        Login / >
+        <
+        /div>
+    );
 }
 
 export default App;
