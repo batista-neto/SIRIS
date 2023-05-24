@@ -11,21 +11,16 @@ export const AuthProvider = ({ children }) => {
     const api = useApi();
 
     //chama essa funcao para autenticar o usuario
-    const login = async (email, senha) => {
-        const data = await api.login(email, senha);
-        if(data.user && data.token) {
-          setUser(data.user);
-          navigate('/adm')
-          return true;
-        }
-        return false;
-    }
-
-    const logout = async () => {
-        await api.logout();
+    const login = async (data) => {
+        setUser(data);
+        navigate("/profile");
+      };
+    
+   //chama essa funcao para fazer o logout
+    const logout = () => {
         setUser(null);
-        navigate("/login", { replace: true });
-    };
+        navigate("/", { replace: true });
+  };
 
     const value = useMemo(
         () => ({
