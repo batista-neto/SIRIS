@@ -1,4 +1,4 @@
-import '../css/login.css'
+import './login.css'
 
 
 export const Login = () => { 
@@ -9,7 +9,9 @@ export const Login = () => {
                 <p1 id='invalid'>Usuário ou senha inválidos</p1>
                 <input type='text' id="usernamelogin" placeHolder="USERNAME"></input>
                 <input type='password' id="senhalogin" placeHolder="SENHA"></input>
-                <button type='submit' id='buttonlogin'>LOGIN</button>
+                <button type='submit' id='buttonlogin'>
+                    LOGIN
+                </button>
             </div>
         </div>
     )

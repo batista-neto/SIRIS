@@ -1,4 +1,4 @@
-import '../css/adm.css'
+import './adm.css'
 
 export const Adm = () => {
     return (

@@ -1,0 +1,118 @@
+/* Ajustando o título*/
+h1 {
+  position: absolute;
+  left: 23.89%;
+  right: 23.89%;
+  top: 6.74%;
+  bottom: 86.26%;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+/* Ajustando a caixa com os conteudos*/
+.box {
+  position: absolute;
+  width: 600px;
+  height: 650px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #122A6E;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Ajustando todos os inputs e depois só posicionando*/
+#usercad, #matriculacad, #passwordcad, #confirmpasswordcad {
+  position: absolute;
+  width: 530px;
+  height: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #122A6E;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 25px;
+  font-family: 'IBM Plex Sans';
+  color: #9F9999;
+}
+
+#usercad {
+  top: 160px;
+}
+
+#matriculacad {
+  top: 230px;
+}
+
+#passwordcad {
+  top: 300px;
+}
+
+#confirmpasswordcad {
+  top: 370px;
+}
+
+/* Ajustando as checkbox e posicinando*/
+#adminput, #funcinput {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid white;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  position: relative;
+  top: 430px;
+}
+
+#adminput {
+  left: 80px;
+}
+
+#funcinput {
+  left: 110px;
+}
+
+#admlabel, #funclabel {
+  position: relative;
+  top: 422px;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-size: 25px;
+  color: white;
+}
+
+#admlabel {
+  left: 80px;
+}
+
+#funclabel {
+  left: 110px;
+}
+
+
+/* Ajustando o botao*/
+#buttoncad {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 50%;
+  top: 530px;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 45px;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-size: 40px;
+  color: #122A6E;
+  
+}
