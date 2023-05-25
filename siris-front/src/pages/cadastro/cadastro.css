@@ -60,28 +60,47 @@ h1 {
   top: 370px;
 }
 
-/* Ajustando as checkbox e posicinando*/
-#adminput, #funcinput {
+/* Ajustando as checkboxes e posicionando */
+input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid white;
   width: 25px;
   height: 25px;
+  border: 1px solid white;
   border-radius: 4px;
   position: relative;
   top: 430px;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
-#adminput {
-  left: 80px;
+input[type="checkbox"]:checked {
+  background-color: #122A6E;
 }
 
-#funcinput {
-  left: 110px;
+input[type="checkbox"]::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-#admlabel, #funclabel {
+input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+#admlabel,
+#funclabel {
   position: relative;
   top: 422px;
   font-family: 'IBM Plex Sans';
@@ -90,29 +109,23 @@ h1 {
   color: white;
 }
 
-#admlabel {
-  left: 80px;
+/* Impedir que os dois checkboxes sejam marcados simultaneamente */
+#adminput:checked ~ #funcinput,
+#funcinput:checked ~ #adminput {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-#funclabel {
-  left: 110px;
+/* Desabilitar o checkbox de administrador quando o de operador estiver marcado */
+#funcinput:checked ~ #admlabel,
+#funcinput:checked ~ #adminput {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-
-/* Ajustando o botao*/
-#buttoncad {
-  position: absolute;
-  width: 320px;
-  height: 60px;
-  left: 50%;
-  top: 530px;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 45px;
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-size: 40px;
-  color: #122A6E;
-  
+/* Desabilitar o checkbox de operador quando o de administrador estiver marcado */
+#adminput:checked ~ #funclabel,
+#adminput:checked ~ #funcinput {
+  pointer-events: none;
+  opacity: 0.5;
 }

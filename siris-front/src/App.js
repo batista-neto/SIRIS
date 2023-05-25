@@ -1,6 +1,8 @@
-import { Login } from "./pages/login/login"
+import React from "react";
+import { Login }  from "./pages/login/login"
 import { Adm } from "./pages/adm/adm"
 import { Cadastro } from "./pages/cadastro/cadastro"
+import { Funcionario } from "./pages/func/func"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ProtectedRoute } from './Auth/ProtectedRoute';
 
@@ -14,16 +16,22 @@ function App() {
                
                 <Route path="/adm" 
                 element= { 
-                <ProtectedRoute> 
-                    { <Adm /> }
-                </ProtectedRoute>
+                 
+                      <Adm />  
+                
                 } />
                 
                 <Route path="/adm/cadastro" 
                 element= { 
-                <ProtectedRoute> 
-                    { <Cadastro /> }
-                </ProtectedRoute>
+                
+                     <Cadastro /> 
+                
+                } />
+                <Route path="/func" 
+                element= { 
+                
+                     <Funcionario /> 
+                
                 } />
 
             </Routes>

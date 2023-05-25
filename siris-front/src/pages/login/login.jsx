@@ -1,47 +1,69 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Auth/context'
 import './login.css'
-import { autenticacao } from '../../Auth/db';
+import axios from 'axios';
 
 
 export const Login = () => { 
 
-    const { login } = useAuth();
-    const [matricula, setMatricula] = useState('');
-    const [senha, setSenha] = useState('');
-    const [ivalideLogin, setInvalideLogin] = useState(false);
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
-    const singup = () => {
+  const handleLogin = async () => {
+    try {
+      // Fazer a solicitação de login para o servidor backend
+      const response = await axios.post('http://localhost:5000/login', {
+        username,
+        password,
+      });
 
-        //verifica se os campos estao preechidos
-        if (matricula && senha) {
-            autenticacao(matricula, senha, (err, resultado) => {
-                if(err) {
-                    console.log('erro ao fazer login', err);
-                    setInvalideLogin(true);
-                } else {
-                    if (resultado.length > 0) {
-                        //usuario e senha encontrado no banco de dados
-                        login({ matricula, senha });
-                    } else {
-                        //usuário ou senha inválidos
-                        setInvalideLogin(true);
-                    }
-                }
-            });
-        } else {
-            setInvalideLogin(true);
+      // Verificar a resposta do servidor
+      if (response.data.message === 'Login successful') {
+        // Login bem-sucedido
+        setLoginSuccess(true);
+        console.log("resposta recebida");
+        if (response.data.role === 'Administrator') {
+          // Redirecionar para a página de administrador
+          console.log('Redirecionando para /adm');
+          return navigate('/adm');
+        } else if (response.data.role === 'User') {
+          console.log('Redirecionando para /func');
+          return navigate('/adm/cadastro');
         }
-    };
+      } else {
+        // Login falhou
+        return setLoginSuccess(false);
+      }
+    } catch (error) {
+      // Tratar erros de solicitação
+      console.error('Erro ao fazer login:', error);
+      setLoginSuccess(false);
+    }
+  };
 
     return (   
        <div>
             <div id="login" className="box">
                 <h1>Faça seu Login</h1>
                 <p1 id='invalid'>Usuário ou senha inválidos</p1>
-                <input type='text' id="usernamelogin" placeHolder="USERNAME" value={ matricula } onChange={(e) => setMatricula(e.target.value)}></input>
-                <input type='password' id="senhalogin" placeHolder="SENHA" value={ senha } onChange={(e) => setSenha(e.target.value)}></input>
-                <button type='submit' id='buttonlogin' onClick={singup}>
+                <input 
+                    type='text'
+                    id="usernamelogin"
+                    placeHolder="USERNAME"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} ></input>
+
+                <input 
+                    type='password'
+                    id="senhalogin" 
+                    placeHolder="SENHA" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    ></input>
+                <button type='submit' id='buttonlogin' onClick={handleLogin} >
                     LOGIN
                 </button>
             </div>
