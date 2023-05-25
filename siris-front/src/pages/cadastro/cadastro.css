@@ -30,7 +30,10 @@ h1 {
 }
 
 /* Ajustando todos os inputs e depois só posicionando*/
-#usercad, #matriculacad, #passwordcad, #confirmpasswordcad {
+#usercad,
+#matriculacad,
+#passwordcad,
+#confirmpasswordcad {
   position: absolute;
   width: 530px;
   height: 40px;
@@ -71,6 +74,7 @@ input[type="checkbox"] {
   border-radius: 4px;
   position: relative;
   top: 430px;
+  left: 90px;
   outline: none;
   cursor: pointer;
   background-color: transparent;
@@ -103,6 +107,7 @@ input[type="checkbox"]:checked::before {
 #funclabel {
   position: relative;
   top: 422px;
+  left: 90px;
   font-family: 'IBM Plex Sans';
   font-style: normal;
   font-size: 25px;
@@ -110,22 +115,57 @@ input[type="checkbox"]:checked::before {
 }
 
 /* Impedir que os dois checkboxes sejam marcados simultaneamente */
-#adminput:checked ~ #funcinput,
-#funcinput:checked ~ #adminput {
+#adminput:checked~#funcinput,
+#funcinput:checked~#adminput {
   pointer-events: none;
   opacity: 0.5;
 }
 
 /* Desabilitar o checkbox de administrador quando o de operador estiver marcado */
-#funcinput:checked ~ #admlabel,
-#funcinput:checked ~ #adminput {
+#funcinput:checked~#admlabel,
+#funcinput:checked~#adminput {
   pointer-events: none;
   opacity: 0.5;
 }
 
 /* Desabilitar o checkbox de operador quando o de administrador estiver marcado */
-#adminput:checked ~ #funclabel,
-#adminput:checked ~ #funcinput {
+#adminput:checked~#funclabel,
+#adminput:checked~#funcinput {
   pointer-events: none;
   opacity: 0.5;
+}
+
+#buttoncad {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 580px;
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 45px;
+  font-family: 'IBM Plex Sans';
+  font-size: 40px;
+  color: #122A6E;
+}
+
+
+
+p {
+  position: absolute;
+  left: 50%;
+  top: 480px;
+  transform: translate(-50%, -50%);
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #FF0000;
+
 }

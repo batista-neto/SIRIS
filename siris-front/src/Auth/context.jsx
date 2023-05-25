@@ -9,12 +9,12 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useLocalStorage("user", null);
     const navigate = useNavigate();
-    const api = useApi();
+    //const api = useApi();
 
     //chama essa funcao para autenticar o usuario
     const login = async (data) => {
         setUser(data);
-        navigate("/profile");
+        navigate("/adm");
       };
     
    //chama essa funcao para fazer o logout
@@ -24,11 +24,10 @@ export const AuthProvider = ({ children }) => {
   };
 
     const value = useMemo(
-        () => ({
-            user,
-            login,
-            logout
-        }),
+        () => (
+            {user, login, logout},
+            [user]
+        ),
         [user]
     );
     

@@ -1,5 +1,5 @@
 /* Ajustando Título*/
- h1 {
+h1 {
     position: absolute;
     width: 400px;
     left: 23.89%;
@@ -16,10 +16,10 @@
     text-align: center;
     letter-spacing: -0.03em;
     color: #FFFFFF;
- }
- 
- /* Ajustando a caixa com os componentes*/
- .box {
+}
+
+/* Ajustando a caixa com os componentes*/
+.box {
     position: absolute;
     width: 600px;
     height: 650px;
@@ -28,17 +28,17 @@
     transform: translate(-50%, -50%);
     background-color: #122A6E;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
+}
 
-  /* Ajustando o botão*/
-#buttonlogin{
+/* Ajustando o botão*/
+#buttonlogin {
     position: absolute;
     width: 320px;
     height: 72px;
     left: 50%;
     transform: translate(-50%, -50%);
     top: 485px;
-    color:#122A6E;
+    color: #122A6E;
     background-color: white;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
     border-radius: 45px;
@@ -46,7 +46,7 @@
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 55px; 
+    font-size: 55px;
     line-height: 100%;
     letter-spacing: -0.03em;
     color: #122A6E;
@@ -56,7 +56,8 @@
 }
 
 /* Ajustando os inputs*/
-#usernamelogin, #senhalogin {
+#usernamelogin,
+#senhalogin {
     position: absolute;
     width: 530px;
     height: 40px;
@@ -94,5 +95,5 @@
     text-align: center;
     letter-spacing: -0.03em;
     color: #FF0000;
-    display: none;
+
 }

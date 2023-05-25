@@ -11,6 +11,7 @@ export const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loginError, setLoginError] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -31,16 +32,18 @@ export const Login = () => {
           return navigate('/adm');
         } else if (response.data.role === 'User') {
           console.log('Redirecionando para /func');
-          return navigate('/adm/cadastro');
+          return navigate('/func');
         }
       } else {
         // Login falhou
-        return setLoginSuccess(false);
+        setLoginSuccess(false);
+        setLoginError(true);
       }
     } catch (error) {
       // Tratar erros de solicitação
       console.error('Erro ao fazer login:', error);
       setLoginSuccess(false);
+      setLoginError(true);
     }
   };
 
@@ -48,7 +51,7 @@ export const Login = () => {
        <div>
             <div id="login" className="box">
                 <h1>Faça seu Login</h1>
-                <p1 id='invalid'>Usuário ou senha inválidos</p1>
+                {loginError && <p id='invalid'>Usuário ou senha inválidos</p>}
                 <input 
                     type='text'
                     id="usernamelogin"

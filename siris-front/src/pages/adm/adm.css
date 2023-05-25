@@ -1,110 +1,77 @@
 #admbox {
-    position: absolute;
-    width: 1540px;
-    height: 740px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #122A6E;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-#useradm, #idadm, #funcaoadm {
-    position: absolute;
-    width: 500px;
-    height: 40px;
-    top: 10px;
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
+  position: absolute;
+  width: 1540px;
+  height: 740px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #122A6E;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin: 0;
+  padding: 0;
 }
 
-#useradm {
-    left: 230px;
+table {
+  position: absolute;
+  height: 40px;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-size: 40px;
+  align-items: center;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  border-spacing: 5px;
+  margin: 10px 0 40px;
+  text-align: center;
 }
 
-#idadm {
-    left: 630px;
+thead {
+  top: 10px;
 }
 
-#funcaoadm {
-    left: 1030px;
+tbody {
+  top: 50px;
 }
 
-hr{
-    position: absolute;
-    width: 1538px;    
-    left: 0px;
-    top: 50px;
-    border: 0.5px solid #000000;
+td,
+th {
+  padding: 5px 120px;
+}
+
+hr {
+  position: absolute;
+  width: 1538px;
+  left: 0px;
+  top: 50px;
+  border: 0.5px solid #000000;
 }
 
 #buttonadm {
-    position: absolute;
-    width: 320px;
-    height: 60px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 660px;
-    background: white;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 45px;
-    font-family: 'IBM Plex Sans';
-    font-size: 40px;
-    color: #122A6E;
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 660px;
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 45px;
+  font-family: 'IBM Plex Sans';
+  font-size: 40px;
+  color: #122A6E;
 }
 
-
-.employee-list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 100px;
-    margin-left: 50px;
-  }
-  
-
-  .employee {
-    width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
-  }
-  
-  .employee p1,
-  .employee p2,
-  .employee p3 {
-    margin-left: 175px;
-    margin-right: 175px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-  #useradm {
-    left: 230px;
-  }
-  
-  #idadm {
-    left: 630px;
-  }
-  
-  #funcaoadm {
-    left: 1030px;
-  }
-   
-
-
-  
+#buttonlogout {
+  position: absolute;
+  width: 80px;
+  height: 30px;
+  left: 95%;
+  transform: translate(-50%, -50%);
+  top: 40px;
+  background: red;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 45px;
+  font-family: 'IBM Plex Sans';
+  font-size: 20px;
+  color: #122A6E;
+}

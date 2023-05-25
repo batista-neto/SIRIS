@@ -77,6 +77,22 @@ def get_users():
     except Exception as e:
         return jsonify({'message': 'Error occurred', 'error': str(e)})
 
+@app.route('/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    try:
+        mycursor = mydb.cursor()
+        sql = "DELETE FROM users WHERE id = %s"
+        val = (user_id,)
+        mycursor.execute(sql, val)
+        mydb.commit()
+
+        if mycursor.rowcount > 0:
+            return jsonify({'message': 'User deleted successfully'})
+        else:
+            return jsonify({'message': 'User not found'})
+
+    except Exception as e:
+        return jsonify({'message': 'Error occurred', 'error': str(e)})
 
 if __name__ == '__main__':
     app.run()

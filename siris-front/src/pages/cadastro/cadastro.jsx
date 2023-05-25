@@ -12,7 +12,8 @@ export const Cadastro = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isAdmin, setIsAdmin] = useState(false);
     const [isOperator, setIsOperator] = useState(false);
-  
+    const [cadError, setCadError] = useState(false);
+
     const handleCadastro = async () => {
       try {
         // Verificar se as senhas coincidem
@@ -38,17 +39,19 @@ export const Cadastro = () => {
         } else {
           // Tratar mensagem de erro
           console.log("Erro ao cadastrar usuário");
+          setCadError(true);
         }
       } catch (error) {
         // Tratar erros de solicitação
         console.error("Erro ao fazer o cadastro:", error);
+        setCadError(true);
       }
     };
   
     return (
       <div id="pagecad" className="box">
         <h1>CADASTRAR</h1>
-  
+
         <input
           type="text"
           id="usercad"
@@ -105,10 +108,13 @@ export const Cadastro = () => {
       >
         OPERADOR
       </label>
-  
+      
+      {cadError && <p>Erro ao fazer cadastro</p>}
+
         <button type="submit" id="buttoncad" onClick={handleCadastro}>
           ADICIONAR
         </button>
+
       </div>
     );
 };

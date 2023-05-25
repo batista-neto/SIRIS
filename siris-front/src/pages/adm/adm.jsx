@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
 export const Adm = () => {
 
+  
     const navigate = useNavigate();
     const handleCadastro = () => {
-         navigate('/adm/cadastro')
+    navigate('/adm/cadastro')
     }
 
     const [users, setUsers] = useState([]);
@@ -30,29 +32,55 @@ export const Adm = () => {
     return role === 1 ? "Administrador" : "Operador";
   };
 
-    return (
-            <div id="admbox" className="box">
-                <p1 id='useradm'>Usuário</p1>
-                <p2 id='idadm'>Matrícula</p2>
-                <p3 id='funcaoadm'>Função</p3>
-                <hr></hr>
-                <div className="employee-list">
-  {users.map((user, index) => (
-    <div key={user.id} className="employee">
-      <p1>{user.username}</p1>
-      <p2>{user.id}</p2>
-      <p3>{getRoleLabel(user.role)}</p3>
+  
+
+  const handleDeleteUser = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${userId}`);
+      fetchUsers(); // Atualiza a lista de usuários após a exclusão
+    } catch (error) {
+      console.error("Erro ao excluir usuário:", error);
+    }
+  };
+
+  return (
+    <div id="admbox" className="box">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>Matrícula</th>
+            <th>Função</th>
+          </tr>
+        </thead>
+        <hr></hr>
+        <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.username}</td>
+                <td>{user.id}</td>
+                <td>{getRoleLabel(user.role)}</td>
+                <td>
+                  <button
+                    type="button"
+                    className="delete-button"
+                    onClick={() => handleDeleteUser(user.id)}>
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <button 
+        type='button' 
+        id='buttonadm'
+        onClick={handleCadastro}>
+        NOVO USUÁRIO</button>
+        <button type="submit" id="buttonlogout" >
+          SAIR
+        </button>
     </div>
-  ))}
-</div>
-
-
-                <button 
-                    type='button' 
-                    id='buttonadm'
-                    onClick={handleCadastro}
-                    >NOVO USUÁRIO</button>
-            </div>
     )
 }
 
