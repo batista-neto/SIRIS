@@ -17,7 +17,7 @@ import {
     Route
 } from "react-router-dom"
 import {
-    ProtectedRoute
+    ProtectedRoute, ProtectedRouteFunc
 } from './Auth/ProtectedRoute';
 import {
     AuthProvider
@@ -53,13 +53,13 @@ function App() {
                     }/> 
                     <Route path = "/func"
                         element = {
-                        <ProtectedRoute>
+                        <ProtectedRouteFunc>
                             <Funcionario />
-                        </ProtectedRoute>
+                        </ProtectedRouteFunc>
                     }/>
 
-        </Routes> 
-        </AuthProvider > 
+                </Routes> 
+            </AuthProvider > 
         </Router>
     );
 }
