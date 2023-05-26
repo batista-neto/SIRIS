@@ -24,61 +24,43 @@ import {
 } from "./Auth/context";
 
 function App() {
-    return ( <
-        Router >
-        <
-        AuthProvider >
-        <
-        Routes >
-        <
-        Route path = "/"
-        element = {
-            <
-            Login / >
-        }
-        />
+    return ( 
+        <Router >
+            <AuthProvider >
+                <Routes >
+                    <Route path = "/"
+                        element = {
+                        <Login />
+                    }/>
 
-        <
-        Route path = "*"
-        element = {
-            <
-            Login / >
-        }
-        />
+                    <Route path = "*"
+                        element = {
+                        <Login />
+                        }/>
 
-        <
-        Route path = "/adm"
-        element = {
+                    <Route path = "/adm"
+                        element = {
+                        <ProtectedRoute>
+                            <Adm />
+                        </ProtectedRoute>
+                    }/>
 
-            <
-            Adm / >
+                    <Route path = "/adm/cadastro"
+                        element = {
+                        <ProtectedRoute>
+                            <Cadastro />
+                        </ProtectedRoute>
+                    }/> 
+                    <Route path = "/func"
+                        element = {
+                        <ProtectedRoute>
+                            <Funcionario />
+                        </ProtectedRoute>
+                    }/>
 
-
-        }
-        />
-
-        <
-        Route path = "/adm/cadastro"
-        element = {
-
-            <
-            Cadastro / >
-
-        }
-        /> <
-        Route path = "/func"
-        element = {
-
-            <
-            Funcionario / >
-
-        }
-        />
-
-        <
-        /Routes> < /
-        AuthProvider > <
-        /Router>
+        </Routes> 
+        </AuthProvider > 
+        </Router>
     );
 }
 

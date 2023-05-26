@@ -1,34 +1,44 @@
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage"
-import { useApi } from "../hooks/useApi";
-import React from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useLocalStorage("user", null);
-    const navigate = useNavigate();
-    //const api = useApi();
+    const [role, setRole] = useLocalStorage("role", null);
+  const navigate = useNavigate();
 
-    //chama essa funcao para autenticar o usuario
-    const login = async (data) => {
-        setUser(data);
-        navigate("/adm");
-      };
+  // Função de login no contexto
+  const login = async (data) => {
+    try {
+      // Fazer a solicitação de login para o servidor backend
+      const response = await axios.post("http://localhost:5000/login", data);
+
+      // Verificar a resposta do servidor
+      if (response.data.message === "Login successful") {
+        setRole(response.data.role);
+        return response; // Retornar a resposta do servidor, se necessário
+      } else {
+        throw new Error("Login failed");
+      }
+    } catch (error) {
+      throw new Error("Login failed");
+    }
+  };
     
    //chama essa funcao para fazer o logout
     const logout = () => {
-        setUser(null);
+        setRole(null);
         navigate("/", { replace: true });
   };
 
     const value = useMemo(
         () => (
-            {user, login, logout},
-            [user]
-        ),
-        [user]
+            {role, login, logout}),
+            [role]
+        
     );
     
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
