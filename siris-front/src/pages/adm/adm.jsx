@@ -2,11 +2,12 @@ import './adm.css'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Auth/context';
 
 
 export const Adm = () => {
 
-  
+    const logout = useAuth();  
     const navigate = useNavigate();
     const handleCadastro = () => {
     navigate('/adm/cadastro')
@@ -43,6 +44,8 @@ export const Adm = () => {
     }
   };
 
+  const handleLogout = () => logout.logout();
+
   return (
     <div id="admbox" className="box">
       <table>
@@ -77,7 +80,7 @@ export const Adm = () => {
         id='buttonadm'
         onClick={handleCadastro}>
         NOVO USUÁRIO</button>
-        <button type="submit" id="buttonlogout" >
+        <button type="submit" id="buttonlogout" onClick={handleLogout}>
           SAIR
         </button>
     </div>
