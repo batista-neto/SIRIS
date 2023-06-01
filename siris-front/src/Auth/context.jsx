@@ -7,7 +7,7 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [role, setRole] = useLocalStorage("role", null);
+  const [role, setRole] = useLocalStorage("role", null);
   const navigate = useNavigate();
 
   // Função de login no contexto
@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     try {
       // Fazer a solicitação de login para o servidor backend
       const response = await axios.post("http://localhost:5000/login", data);
-
       // Verificar a resposta do servidor
       if (response.data.message === "Login successful") {
         setRole(response.data.role);
