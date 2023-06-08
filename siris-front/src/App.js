@@ -23,6 +23,8 @@ import {
     AuthProvider
 } from "./Auth/context";
 
+import { ConfigAntena } from "./pages/configAntena/configAntena";
+
 function App() {
     return ( 
         <Router >
@@ -55,6 +57,7 @@ function App() {
                         element = {
                         <ProtectedRouteFunc>
                             <Funcionario />
+                           
                         </ProtectedRouteFunc>
                     }/>
 
