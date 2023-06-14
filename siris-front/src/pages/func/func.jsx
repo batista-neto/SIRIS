@@ -1,12 +1,11 @@
 import React from "react";
 import './func.css'
 import {BiCaretRight, BiSquare} from 'react-icons/bi'
-import { AuthProvider, useAuth } from '../../Auth/context'
+import { useAuth } from '../../Auth/context'
 import { useState } from "react";
 import { ConfigAntena } from "../configAntena/configAntena";
-import { Cadastro } from "../cadastro/cadastro";
 
-export const Funcionario = () => {
+export const Funcionario = () => { 
     // Fazendo logout
     const login = useAuth();    
     const logout = () => login.logout();
@@ -15,6 +14,7 @@ export const Funcionario = () => {
     const [openConfigAntena, setOpenConfigAntena] = useState(false)
     const [isAntena, setIsAntena] = useState()
 
+    //grafico
     return (
         <div>
             <div id="pagefunc" className="boxfunc">
@@ -44,7 +44,9 @@ export const Funcionario = () => {
                 <span>GRÁFICO 1</span></div>
 
                 <div className="boxGrafico2">
-                <span>GRÁFICO 2</span></div>
+                <span>GRÁFICO 2</span>
+                
+                </div>
 
                 <div id='cronometro' ></div>
             </div>

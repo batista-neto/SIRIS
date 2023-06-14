@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '../../Auth/context'
+import { useAuth } from '../../Auth/context'
 import './login.css'
-import axios from 'axios';
+
 
 
 export const Login = () => { 

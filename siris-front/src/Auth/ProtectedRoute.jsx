@@ -8,7 +8,7 @@ export const ProtectedRoute = ({ children }) => {
         return <Navigate to="/login" />
     } else if (role === 'Administrator'){
         return children
-    } else if (role != 'Administrator') {
+    } else if (role !== 'Administrator') {
         return <Navigate to="/func" />
     }
 }; 
@@ -19,7 +19,7 @@ export const ProtectedRouteFunc = ({ children }) => {
         return <Navigate to="/login" />
     } else if (role === 'User'){
         return children
-    } else if (role != 'User') {
+    } else if (role !== 'User') {
         return <Navigate to="/adm" />
     }
 }; 
