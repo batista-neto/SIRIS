@@ -4,6 +4,7 @@ import {BiCaretRight, BiSquare} from 'react-icons/bi'
 import { useAuth } from '../../Auth/context'
 import { useState } from "react";
 import { ConfigAntena } from "../configAntena/configAntena";
+import Barchart from "./grafico";
 
 export const Funcionario = () => { 
     // Fazendo logout
@@ -41,9 +42,12 @@ export const Funcionario = () => {
             <div>
 
                 <div className="boxGrafico">
-                <span>GRÁFICO 1</span></div>
+                    <span>GRÁFICO 1</span>
+                    <Barchart />
+                </div>
 
                 <div className="boxGrafico2">
+                    <Barchart />
                 <span>GRÁFICO 2</span>
                 
                 </div>

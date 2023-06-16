@@ -6,6 +6,7 @@ import { Funcionario } from "./pages/func/func"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ProtectedRoute, ProtectedRouteFunc } from './Auth/ProtectedRoute';
 import { AuthProvider } from "./Auth/context";
+import Barchart from "./pages/func/grafico";
 
 
 function App() {
@@ -38,10 +39,17 @@ function App() {
                     }/> 
                     <Route path = "/func"
                         element = {
-                        <ProtectedRouteFunc>
+                        
                             <Funcionario />
                            
-                        </ProtectedRouteFunc>
+                        
+                    }/>
+                    <Route path = "/grafico"
+                        element = {
+                        
+                            <Barchart />
+                           
+                        
                     }/>
 
                 </Routes> 

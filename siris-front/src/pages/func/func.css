@@ -71,6 +71,7 @@
 .boxGrafico {
     position: absolute;
     display: flex;
+    flex-direction: column;
     top: 35px;
     left: 0px;
     height: 100%;
@@ -104,4 +105,9 @@
     left: 5px;
     color: white;
 
+}
+
+.grafico {
+    height: 100%;
+    width: 50%;
 }
