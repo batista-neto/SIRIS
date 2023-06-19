@@ -8,11 +8,11 @@ import { ConfigAntena } from "../configAntena/configAntena";
 import Barchart, { Mensagem } from "./grafico";
 
 export const Funcionario = () => { 
-    // Fazendo logout
+    //fazendo logout
     const login = useAuth();    
     const logout = () => login.logout();
 
-    // Abrindo config da Antena
+    //abrindo config da Antena
     const [openConfigAntena, setOpenConfigAntena] = useState(false)
     const [isAntena, setIsAntena] = useState()
 

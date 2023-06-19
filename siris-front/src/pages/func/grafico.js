@@ -28,12 +28,12 @@ export function Barchart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchData(); // Chama a função para buscar os dados inicialmente
-    const interval = setInterval(fetchData, 500); // Chama a função a cada 1 segundo
+    fetchData();
+    const interval = setInterval(fetchData, 500); 
 
     return () => {
       clearInterval(interval);
-       // Limpa o intervalo quando o componente é desmontado
+     
     };
   }, []);
 
@@ -71,12 +71,11 @@ export const Mensagem = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchData(); // Chama a função para buscar os dados inicialmente
-    const interval = setInterval(fetchData, 500); // Chama a função a cada 1 segundo
+    fetchData(); 
+    const interval = setInterval(fetchData, 500); 
 
     return () => {
       clearInterval(interval);
-       // Limpa o intervalo quando o componente é desmontado
     };
   }, []);
 
