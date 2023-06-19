@@ -76,6 +76,8 @@
     left: 0px;
     height: 100%;
     width: 50%;
+    max-width: 50%;
+    overflow-x: scroll;
     border: 2px solid black;
     border-top: 20px solid black;
 }
@@ -95,6 +97,8 @@
     left: 50%;
     height: 100%;
     width: 50%;
+    max-width: 50%;
+    overflow-x: scroll;
     border: 2px solid black;
     border-top: 20px solid black;
 }
@@ -107,7 +111,7 @@
 
 }
 
-.grafico {
-    height: 100%;
-    width: 50%;
+.grafico{
+
+    width: 1000px;
 }
