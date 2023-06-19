@@ -31,9 +31,11 @@ def post_data():
 def update_data():
     global data, times
 
+    time.sleep(15)
+
     start_time = datetime.now()  # Obtém o tempo de referência no início da atualização
 
-    for _ in range(20):  # Executa durante 20 segundos
+    for _ in range(50):  # Executa durante 20 segundos
         value = round(random.uniform(0, 360), 2)  # Arredonda para duas casas decimais
         current_time = int((datetime.now() - start_time).total_seconds())  # Calcula o tempo decorrido em segundos
 
@@ -41,7 +43,7 @@ def update_data():
             data.append(value)
             times.append(current_time)
 
-        time.sleep(1)  # Aguarda 1 segundo
+        time.sleep(0.5)  # Aguarda 1 segundo
 
     # Limpa os dados após 20 segundos
     

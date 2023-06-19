@@ -1,54 +1,102 @@
+import React, { useState, useEffect } from 'react';
+import { BsFillCircleFill} from 'react-icons/bs'
 import {
   Chart as ChartJS,
+  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  Title,
   Tooltip,
   Legend,
+  defaults,
 } from 'chart.js';
-import { Bar, Scatter } from 'react-chartjs-2'
-import React, { useState, useEffect } from 'react'
-import './func.css'
+import { Line } from 'react-chartjs-2';
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
+export function Barchart() {
+  const [labels, setLabels] = useState([]);
+  const [data, setData] = useState([]);
 
-function Barchart() {
-    
-    const chartOptions = {
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-            beginAtZero: true,
-            },
-        },
+  useEffect(() => {
+    fetchData(); // Chama a função para buscar os dados inicialmente
+    const interval = setInterval(fetchData, 500); // Chama a função a cada 1 segundo
+
+    return () => {
+      clearInterval(interval);
+       // Limpa o intervalo quando o componente é desmontado
     };
+  }, []);
 
-    function generateRandomData(length, minValue, maxValue) {
-        const data = [];
-        for (let i = 0; i < length; i++) {
-          const x = Math.random() * (maxValue - minValue) + minValue;
-          const y = Math.random() * (maxValue - minValue) + minValue;
-          data.push({ x, y });
-        }
-        return data;
-      }
+  const fetchData = () => {
+    fetch('http://localhost:4000/data')
+      .then(response => response.json())
+      .then(data => {
+        const { times, data: apiData } = data;
+        setLabels(times);
+        setData(apiData);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
       
-      const chartData = {
-        datasets: [
-          {
-            label: 'A dataset',
-            data: generateRandomData(100, -100, 100),
-            backgroundColor: 'rgba(255, 99, 132, 1)',
-          },
-        ],
-      };
-      
-    return(
-        <did className="grafico">
-            <Scatter className='grafico123' options={chartOptions} data={chartData} />
-        </did>
-    )
+  };
+
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: 'Azimute',
+        data,
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  };
+
+
+  return <Line data={chartData} />;
 }
+
+export const Mensagem = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData(); // Chama a função para buscar os dados inicialmente
+    const interval = setInterval(fetchData, 500); // Chama a função a cada 1 segundo
+
+    return () => {
+      clearInterval(interval);
+       // Limpa o intervalo quando o componente é desmontado
+    };
+  }, []);
+
+  const fetchData = () => {
+    fetch('http://localhost:4000/data')
+      .then(response => response.json())
+      .then(data => {
+        const {data: apiData } = data;
+        setData(apiData);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  return (
+    <div>
+      {data.length === 0 && <div id='recepcao'><BsFillCircleFill />Aguardando Dados</div>}
+      {data.length !== 0 && <div id='recebendo'>Recebendo Dados...</div>}
+    </div>
+  );
+};
 
 export default Barchart;

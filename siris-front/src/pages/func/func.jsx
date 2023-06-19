@@ -1,10 +1,11 @@
 import React from "react";
 import './func.css'
 import {BiCaretRight, BiSquare} from 'react-icons/bi'
+import { BsFillCircleFill} from 'react-icons/bs'
 import { useAuth } from '../../Auth/context'
 import { useState } from "react";
 import { ConfigAntena } from "../configAntena/configAntena";
-import Barchart from "./grafico";
+import Barchart, { Mensagem } from "./grafico";
 
 export const Funcionario = () => { 
     // Fazendo logout
@@ -53,6 +54,9 @@ export const Funcionario = () => {
                 </div>
 
                 <div id='cronometro' ></div>
+                
+                <Mensagem />
+
             </div>
             <ConfigAntena isAntena={isAntena} isOpen={openConfigAntena} setConfigAntena={() => setOpenConfigAntena(!openConfigAntena)}/>
         </div>
