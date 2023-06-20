@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BsFillCircleFill} from 'react-icons/bs'
+import { BsFillCircleFill} from 'react-icons/bs';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +12,7 @@ import {
   defaults,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import axios from 'axios';
 
 ChartJS.register(
   CategoryScale,
@@ -23,79 +24,106 @@ ChartJS.register(
   Legend
 );
 
-export function Barchart() {
+export function Grafico() {
   const [labels, setLabels] = useState([]);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 500); 
+  function MudarDados() {
+    if (chartData !== '') {
+        chartData.labels = labels;
+        chartData.datasets[0].data = data;
+        chartData.update();
+    }
+  }
 
-    return () => {
-      clearInterval(interval);
-     
-    };
-  }, []);
-
-  const fetchData = () => {
-    fetch('http://localhost:4000/data')
-      .then(response => response.json())
-      .then(data => {
-        const { times, data: apiData } = data;
+  //funcao para atualizar o grafico
+  const atualizarGrafico = () => {
+    axios.get('http://localhost:4000/data')
+      .then(response => {
+        const { times, data: apiData } = response.data;
         setLabels(times);
         setData(apiData);
+        MudarDados();
       })
       .catch(error => {
         console.error('Error:', error);
       });
-      
   };
 
+  useEffect(() => {
+    atualizarGrafico();
+    const interval = setInterval(atualizarGrafico, 500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  //criando grafico
   const chartData = {
     labels,
     datasets: [
       {
         label: 'Azimute',
         data,
+        options: {
+          maintainAspetcRatio: false,
+        },
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
   };
 
-
-  return <Line data={chartData} />;
+  return (
+    <div className='grafico'>
+      <Line data={chartData} />
+    </div>
+  );
 }
 
+//verificando se ja esta recebendo dados e mostrando mensagem
 export const Mensagem = () => {
-  const [data, setData] = useState([]);
+  const [recebendo, setRecebendo] = useState();
+  var tamanho = 0;
+
+  const recebendoDados = () => {
+    axios.get('http://localhost:4000/data')
+      .then(response => {
+        const { data: apiData } = response.data;
+        console.log(tamanho, apiData.length)
+        if(apiData.length === tamanho) {
+          setRecebendo(0)
+          tamanho = 0;
+        }
+        else if(apiData.length > tamanho) {
+          setRecebendo(1)
+          tamanho = apiData.length
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setRecebendo(3);
+      });
+  };
 
   useEffect(() => {
-    fetchData(); 
-    const interval = setInterval(fetchData, 500); 
+    recebendoDados();
+    const interval = setInterval(recebendoDados, 500);
 
     return () => {
       clearInterval(interval);
     };
   }, []);
 
-  const fetchData = () => {
-    fetch('http://localhost:4000/data')
-      .then(response => response.json())
-      .then(data => {
-        const {data: apiData } = data;
-        setData(apiData);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
   return (
     <div>
-      {data.length === 0 && <div id='recepcao'><BsFillCircleFill />Aguardando Dados</div>}
-      {data.length !== 0 && <div id='recebendo'>Recebendo Dados...</div>}
+      {recebendo === 0 && <div id='recepcao'><BsFillCircleFill />Aguardando Dados</div>}
+      {recebendo === 1 && <div id='recebendo'>Recebendo Dados...</div>}
     </div>
   );
 };
 
-export default Barchart;
+
+//exportando componente grafico
+export default Grafico;

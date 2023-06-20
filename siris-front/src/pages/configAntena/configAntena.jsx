@@ -3,8 +3,10 @@ import './configAntena.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from "react";
 import axios from "axios";
+import { Funcionario } from "../func/func";
 
-export const ConfigAntena = ({isAntena, isOpen, setConfigAntena}) => {
+
+export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico1, setGerarGrafico2}) => {
     
     const [port, setPort] = useState("")
     const [bautrate, setBautrate] = useState("")
@@ -22,6 +24,7 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena}) => {
                 parit,
                 stopbits,
             })
+            setGerarGrafico1(true);
         }
 
         else if (isAntena === "antena2") {
@@ -32,13 +35,14 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena}) => {
                 parit,
                 stopbits,
             })
+            setGerarGrafico2(true);
         }
 
         limparCampos();
         setConfigAntena(false);
-        
     }
 
+    
     // limpar campos
     const limparCampos = () => {
         setPort("");

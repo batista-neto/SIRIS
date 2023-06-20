@@ -5,7 +5,7 @@ import { BsFillCircleFill} from 'react-icons/bs'
 import { useAuth } from '../../Auth/context'
 import { useState } from "react";
 import { ConfigAntena } from "../configAntena/configAntena";
-import Barchart, { Mensagem } from "./grafico";
+import { Grafico, Mensagem } from "./grafico";
 
 export const Funcionario = () => { 
     //fazendo logout
@@ -16,7 +16,13 @@ export const Funcionario = () => {
     const [openConfigAntena, setOpenConfigAntena] = useState(false)
     const [isAntena, setIsAntena] = useState()
 
-    //grafico
+    const [gerarGrafico1, setGerarGrafico1] = useState(false);
+    const [gerarGrafico2, setGerarGrafico2] = useState(false);
+
+
+    const pararGrafico1  = () => {setGerarGrafico1(false)};
+    const pararGrafico2  = () => {setGerarGrafico2(false)};
+
     return (
         <div>
             <div id="pagefunc" className="boxfunc">
@@ -25,7 +31,7 @@ export const Funcionario = () => {
                     setOpenConfigAntena(true)}}>
                 <span><BiCaretRight/> GRÁFICO 1</span></button>
                 
-                <button type="submit" class='botaoStop'>
+                <button type="submit" class='botaoStop' onClick={pararGrafico1}>
                 <span><BiSquare/> PARAR 1</span></button>
                 
                 <button type="submit" class='botao' onClick={() => {
@@ -33,7 +39,7 @@ export const Funcionario = () => {
                     setOpenConfigAntena(true)}}>
                 <span><BiCaretRight/> GRÁFICO 2</span></button>
                 
-                <button type="submit" class='botaoStop'>
+                <button type="submit" class='botaoStop' onClick={pararGrafico2}>
                 <span><BiSquare/> PARAR 2</span></button>
                 
                 <button id='help' type="submit" class='botao'>HELP</button>
@@ -42,13 +48,13 @@ export const Funcionario = () => {
             </div>
             <div>
 
-                <div className="boxGrafico">
+                <div className="boxGrafico1">
                     <span>GRÁFICO 1</span>
-                    <Barchart />
+                    {gerarGrafico1 && <Grafico />}
                 </div>
 
                 <div className="boxGrafico2">
-                    <Barchart />
+                    {gerarGrafico2 && <Grafico />}
                 <span>GRÁFICO 2</span>
                 
                 </div>
@@ -58,7 +64,8 @@ export const Funcionario = () => {
                 <Mensagem />
 
             </div>
-            <ConfigAntena isAntena={isAntena} isOpen={openConfigAntena} setConfigAntena={() => setOpenConfigAntena(!openConfigAntena)}/>
+            <ConfigAntena isAntena={isAntena} isOpen={openConfigAntena} setConfigAntena={() => setOpenConfigAntena(!openConfigAntena)}
+            setGerarGrafico1={setGerarGrafico1} setGerarGrafico2={setGerarGrafico2}/>
         </div>
     )
 };
