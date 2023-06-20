@@ -31,7 +31,7 @@ def post_data():
 def update_data():
     global data, times
 
-    time.sleep(15)
+    time.sleep(5)
 
     start_time = datetime.now()  # Obtém o tempo de referência no início da atualização
 
