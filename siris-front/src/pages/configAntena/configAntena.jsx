@@ -6,7 +6,7 @@ import axios from "axios";
 import { Funcionario } from "../func/func";
 
 
-export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico1, setGerarGrafico2}) => {
+export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico1, setGerarGrafico2, setPararCronometro, setIniciarCronometro}) => {
     
     const [port, setPort] = useState("")
     const [bautrate, setBautrate] = useState("")
@@ -40,6 +40,8 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
 
         limparCampos();
         setConfigAntena(false);
+        setIniciarCronometro(true);
+        setPararCronometro(false);
     }
 
     

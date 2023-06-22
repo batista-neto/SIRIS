@@ -12,6 +12,8 @@ data = []  # Lista para armazenar os dados
 times = []  # Lista para armazenar os tempos
 lock = threading.Lock()  # Lock para sincronização do acesso às listas
 update_thread = None  # Referência para a thread de atualização
+dadosantena = {"antena1": [],
+               "antena2": []}
 
 @app.route('/data', methods=['POST', 'GET'])
 def post_data():
@@ -46,6 +48,30 @@ def update_data():
         time.sleep(0.5)  # Aguarda 1 segundo
 
     # Limpa os dados após 20 segundos
+@app.route('/configantena',methods=['GET'])
+def azimute():
+    return dadosantena
+
+@app.route('/configantena/antena1', methods=['POST'])
+def configantena():
+    port = request.json['port']
+    bautrate = request.json['bautrate']
+    bytesize = request.json['bytesize']
+    parit = request.json['parit']
+    stopbits = request.json['stopbits']
+
+    dadosantena["antena1"] = [port, bautrate, bytesize, parit, stopbits]
+
+@app.route('/configantena/antena2', methods=['POST'])
+def configantena_antena2():
+    port = request.json['port']
+    bautrate = request.json['bautrate']
+    bytesize = request.json['bytesize']
+    parit = request.json['parit']
+    stopbits = request.json['stopbits']
+
+    dadosantena["antena2"] = [port, bautrate, bytesize, parit, stopbits]
+
     
 
 if __name__ == '__main__':

@@ -59,15 +59,23 @@
     border-width: 0px;
 }
 
-#cronometro {
+#boxcronometro {
     position: absolute;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 280px;
     height: 80px;
     top: 35px;
     left: 0px;    
     background-color: #122A6E;
+}
+
+#cronometro {
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 60px;
 }
 
 #recepcao {

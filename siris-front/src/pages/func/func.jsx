@@ -6,6 +6,7 @@ import { useAuth } from '../../Auth/context'
 import { useState } from "react";
 import { ConfigAntena } from "../configAntena/configAntena";
 import { Grafico, Mensagem } from "./grafico";
+import { Cronometro } from "./cronometro";
 
 export const Funcionario = () => { 
     //fazendo logout
@@ -20,8 +21,16 @@ export const Funcionario = () => {
     const [gerarGrafico2, setGerarGrafico2] = useState(false);
 
 
-    const pararGrafico1  = () => {setGerarGrafico1(false)};
-    const pararGrafico2  = () => {setGerarGrafico2(false)};
+    const pararGrafico1  = () => {setGerarGrafico1(false); paraCronometro()};
+    const pararGrafico2  = () => {setGerarGrafico2(false); paraCronometro()};
+
+    //rodando cronometro
+    const [iniciarCronometro, setIniciarCronometro] = useState(false);
+    const [pararCronometro, setPararCronometro] = useState(false);
+    
+    const paraCronometro = () => {
+        setIniciarCronometro(false); 
+        setPararCronometro(true);};
 
     return (
         <div>
@@ -59,13 +68,13 @@ export const Funcionario = () => {
                 
                 </div>
 
-                <div id='cronometro' ></div>
+                <div id='boxcronometro' > <Cronometro iniciarCronometro={iniciarCronometro} pararCronometro={pararCronometro}/> </div>
                 
                 <Mensagem />
 
             </div>
             <ConfigAntena isAntena={isAntena} isOpen={openConfigAntena} setConfigAntena={() => setOpenConfigAntena(!openConfigAntena)}
-            setGerarGrafico1={setGerarGrafico1} setGerarGrafico2={setGerarGrafico2}/>
+            setGerarGrafico1={setGerarGrafico1} setGerarGrafico2={setGerarGrafico2} setIniciarCronometro={setIniciarCronometro} setPararCronometro={setPararCronometro}/>
         </div>
     )
 };
