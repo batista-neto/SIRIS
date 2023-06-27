@@ -62,6 +62,8 @@ def configantena():
 
     dadosantena["antena1"] = [port, bautrate, bytesize, parit, stopbits]
 
+    return '', 200
+
 @app.route('/configantena/antena2', methods=['POST'])
 def configantena_antena2():
     port = request.json['port']
@@ -72,11 +74,12 @@ def configantena_antena2():
 
     dadosantena["antena2"] = [port, bautrate, bytesize, parit, stopbits]
 
-    
+    return '', 200
+
 
 if __name__ == '__main__':
     update_thread = threading.Thread(target=update_data)
     update_thread.start()
-    app.run(port=4000)
+    app.run(host='0.0.0.0', port=4000)
 
 
