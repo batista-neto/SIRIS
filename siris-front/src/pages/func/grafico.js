@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './func.css'
 import { BsFillCircleFill} from 'react-icons/bs';
 import {
   Chart as ChartJS,
@@ -27,6 +28,7 @@ ChartJS.register(
 export function Grafico() {
   const [labels, setLabels] = useState([]);
   const [data, setData] = useState([]);
+  const [graficoContainerWidth, setGraficoContainerWidth] = useState('');
 
   function MudarDados() {
     if (chartData !== '') {
@@ -38,11 +40,15 @@ export function Grafico() {
 
   //funcao para atualizar o grafico
   const atualizarGrafico = () => {
-    axios.get('http://localhost:4000/data')
+    axios.get('http://192.168.100.26:5000/buffer')
       .then(response => {
-        const { times, data: apiData } = response.data;
-        setLabels(times);
-        setData(apiData);
+        const { antena1: apiData } = response.data;
+        const data = apiData[0]
+        const time = apiData[2]
+        console.log('Data:', data);
+        console.log('time:', time);
+        setLabels(time);
+        setData(data);
         MudarDados();
       })
       .catch(error => {
@@ -75,12 +81,32 @@ export function Grafico() {
     ],
   };
 
-  return (
-    <div className='grafico'>
-      <Line data={chartData} />
-    </div>
+  useEffect(() => {
+    if (labels.length > 7) {
+      const newWidth = 700 + (labels.length - 7) * 30;
+      setGraficoContainerWidth(`${newWidth}px`);
+    }
+  }, [labels]);
+
+   return (
+      <div className='graficoContainer' style={{ width: graficoContainerWidth, height: '700px'}}>
+        <Line data={chartData} />
+      </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //verificando se ja esta recebendo dados e mostrando mensagem
 export const Mensagem = () => {

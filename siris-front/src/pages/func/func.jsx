@@ -33,7 +33,7 @@ export const Funcionario = () => {
         setPararCronometro(true);};
 
     return (
-        <div>
+        <div className="paginaFuncionario">
             <div id="pagefunc" className="boxfunc">
                 <button type="submit" class='botao' onClick={() => {
                     setIsAntena("antena1"); 
@@ -59,7 +59,9 @@ export const Funcionario = () => {
 
                 <div className="boxGrafico1">
                     <span>GRÁFICO 1</span>
-                    {gerarGrafico1 && <Grafico />}
+                    <div className='grafico'>
+                        {gerarGrafico1 && <Grafico />}
+                    </div>                   
                 </div>
 
                 <div className="boxGrafico2">
