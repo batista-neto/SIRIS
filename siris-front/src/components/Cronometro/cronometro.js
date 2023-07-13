@@ -7,7 +7,7 @@ export const Cronometro = ({iniciarCronometro, pararCronometro}) => {
     let interval;
 
     if (iniciarCronometro && !pararCronometro) {
-      setTempo(0); // Redefinir o valor do tempo para 0 quando iniciar o cronômetro
+      setTempo(0); 
       interval = setInterval(() => {
         setTempo(tempo => tempo + 1);
       }, 1000);

@@ -50,7 +50,7 @@ export const Cadastro = () => {
   
     return (
       <div id="pagecad" className="box">
-        <h1>CADASTRAR</h1>
+        <h1 id="h1cadastro">CADASTRAR</h1>
 
         <input
           type="text"
@@ -109,7 +109,7 @@ export const Cadastro = () => {
         OPERADOR
       </label>
       
-      {cadError && <p>Erro ao fazer cadastro</p>}
+      {cadError && <p id='pcadastro'>Erro ao fazer cadastro</p>}
 
         <button type="submit" id="buttoncad" onClick={handleCadastro}>
           ADICIONAR

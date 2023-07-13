@@ -3,7 +3,7 @@ import './configAntena.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from "react";
 import axios from "axios";
-import { Funcionario } from "../func/func";
+import { Funcionario } from "../../pages/func/func";
 
 
 export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico1, setGerarGrafico2, setPararCronometro, setIniciarCronometro}) => {
@@ -13,6 +13,7 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
     const [bytesize, setBytesize] = useState("")
     const [parit, setParit] = useState("")
     const [stopbits, setStopbits] = useState("")
+    const [erroAntena, setErroAntena] = useState(false)
 
     // Postar dados da Antena
     const postConfigAntena = () => {
@@ -24,7 +25,21 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
                 parit,
                 stopbits,
             })
-            setGerarGrafico1(true);
+            axios.post("http://localhost:4000/configantena/stop1", {
+                stop: false
+            });
+
+            setTimeout(() => axios.get("http://localhost:4000/configantena")
+                .then(response => {
+                    const { mensagem1: apiData } = response.data;
+                    setErroAntena(apiData);
+                    if(apiData == false) {
+                        setGerarGrafico1(true);
+                        setConfigAntena(false);
+                        setIniciarCronometro(true);
+                        setPararCronometro(false); 
+                    }
+                }), 3000);
         }
 
         else if (isAntena === "antena2") {
@@ -35,13 +50,24 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
                 parit,
                 stopbits,
             })
-            setGerarGrafico2(true);
+            axios.post("http://localhost:4000/configantena/stop2", {
+                stop: false
+            });
+
+            setTimeout(() => axios.get("http://localhost:4000/configantena")
+                .then(response => {
+                    const { mensagem2: apiData } = response.data;
+                    setErroAntena(apiData);
+                    if(apiData == false) {
+                        setGerarGrafico2(true);
+                        setConfigAntena(false);
+                        setIniciarCronometro(true);
+                        setPararCronometro(false); 
+                    }
+                }), 3000);
         }
 
         limparCampos();
-        setConfigAntena(false);
-        setIniciarCronometro(true);
-        setPararCronometro(false);
     }
 
     
@@ -58,7 +84,7 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
         return (
             <div id="background">
                 <div id="pagecad" className="boxantena">
-                    <h1>Configurações de Comunicação</h1>
+                    <h1 id='h1configantena'>Configurações de Comunicação</h1>
                     <input
                     type="text"
                     className="form"
@@ -71,7 +97,7 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
                     type="number"
                     className="form"
                     id="bautrate"
-                    placeholder="BAUTRATE"
+                    placeholder="BAUDRATE"
                     value={bautrate}
                     onChange={(e) => setBautrate(e.target.value)}
                     />
@@ -84,7 +110,7 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
                     onChange={(e) => setBytesize(e.target.value)}
                     />
                     <input
-                    type="number"
+                    type="text"
                     className="form"
                     id="parit"
                     placeholder="PARIT"
@@ -107,6 +133,8 @@ export const ConfigAntena = ({isAntena, isOpen, setConfigAntena, setGerarGrafico
                     <button type="submit" id="buttonfechar" onClick={setConfigAntena}>
                     <span><AiOutlineClose/></span>
                     </button>
+
+                    {erroAntena && <p id='erroantena'>Algo deu errado (Tente Novamente)</p>}
                 </div>
             </div>
         )

@@ -6,7 +6,10 @@ import { Funcionario } from "./pages/func/func"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ProtectedRoute, ProtectedRouteFunc } from './Auth/ProtectedRoute';
 import { AuthProvider } from "./Auth/context";
-import Barchart from "./pages/func/grafico";
+import { Help } from "./pages/Help/help";
+import { HelpDados } from "./pages/Help/helpdados";
+import { HelpRelatorio } from "./pages/Help/helprelatorio";
+import { HelpSenha } from "./pages/Help/helpsenha";
 
 
 function App() {
@@ -39,16 +42,37 @@ function App() {
                     }/> 
                     <Route path = "/func"
                         element = {
-                        
+                       <ProtectedRouteFunc>
                             <Funcionario />
-                           
+                       </ProtectedRouteFunc>
                         
                     }/>
-                    <Route path = "/grafico"
+                    <Route path = "/help"
                         element = {
+                       <ProtectedRouteFunc>
+                            <Help />
+                       </ProtectedRouteFunc>
                         
-                            <Barchart />
-                           
+                    }/>
+                    <Route path = "/helpdados"
+                        element = {
+                        <ProtectedRouteFunc>
+                            <HelpDados />
+                        </ProtectedRouteFunc>   
+                        
+                    }/>
+                    <Route path = "/helprelatorio"
+                        element = {
+                        <ProtectedRouteFunc>
+                            <HelpRelatorio />
+                       </ProtectedRouteFunc>   
+                        
+                    }/>
+                    <Route path = "/helpsenha"
+                        element = {
+                        <ProtectedRouteFunc>
+                            <HelpSenha />
+                        </ProtectedRouteFunc>   
                         
                     }/>
 

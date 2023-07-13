@@ -20,7 +20,7 @@
   }
   
   /* Ajustando o título*/
-h1 {
+#h1configantena {
     position: absolute;
     left: 50%;
     top: 30px;
@@ -96,3 +96,19 @@ h1 {
     color: #122A6E;
   }
   
+  #erroantena {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translate(-50%, -50%);
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #FF0000;
+  }

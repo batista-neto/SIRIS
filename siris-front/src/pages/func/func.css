@@ -89,53 +89,19 @@ html, body {
     font-size: 60px;
 }
 
-#recepcao {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    width: 280px;
-    height: 30px;
-    top: 115px;
-    left: 0px;
-    color: #FFF507;    
-    background-color: #DADADA;
-}
-
-#recepcao svg {
-    font-size: 23px;
-    margin-right: 5px;
-    color: #FFF507;
-    
-}
-
-#recebendo {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    width: 280px;
-    height: 30px;
-    top: 115px;
-    left: 0px;
-    color: #00FF19;    
-    background-color: #DADADA;
-}
-
 .boxGrafico1 {
     position: absolute;
     display: flex;
-    flex-direction: column;
     top: 35px;
     left: 0px;
-    height: 910px;
+    height: 100vh;
     width: 50vw;
-    max-width: 50vw;
-    overflow-x: scroll;
     border: 3px solid black;
     border-top: 20px solid black;
+}
+
+.boxGrafico1.red {
+    background-color: #F30101;
 }
 
 .boxGrafico1 span {
@@ -165,9 +131,25 @@ html, body {
 
 }
 
-.grafico{
+.grafico {
     position: absolute;
+    height: 100vh;
     top: 90px;
-    width: 50vw;
-    height: 720px;
+    width: 700px;
+}
+
+#pararanomalia {
+    position: absolute;
+    top: 20px;
+    left: 98%;
+    transform: translate(-50%, -50%);
+    color: #122A6E;
+}
+
+#pararanomalia2 {
+    position: absolute;
+    top: 20px;
+    left: 98%;
+    transform: translate(-50%, -50%);
+    color: #122A6E;
 }

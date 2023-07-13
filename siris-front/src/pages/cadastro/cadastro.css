@@ -1,5 +1,5 @@
 /* Ajustando o título*/
-h1 {
+#h1cadastro {
   position: absolute;
   left: 23.89%;
   right: 23.89%;
@@ -152,7 +152,7 @@ input[type="checkbox"]:checked::before {
 
 
 
-p {
+#pcadastro {
   position: absolute;
   left: 50%;
   top: 480px;
