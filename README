@@ -1,0 +1,13 @@
+O SIRIS (Sistema de Redundância para Identificação de Sinais) tem como principal
+objetivo garantir a precisão e confiabilidade na identificação de sinais vindos do radar para o
+STDL* (Sistema de Tratamento de Dados e Localização), na qual recebe dados de localização
+emitidos por foguetes no Centro de Lançamento de Alcântara. O STDL envia essa localização
+para a antena, para que ela colete dados de vida útil do foguete e de sua carga útil. O grande
+desafio enfrentado é uma interferência causada por ruídos* nos sinais* captados pelo radar*, o
+que pode levar a erros na identificação da localização e, consequentemente, na coleta de
+informações pela antena*. Para solucionar esse problema, o SIRIS realiza a leitura serial* dos
+dados de azimute* e elevação* do radar, filtrando o ruído e reenviando as informações mais
+precisas para o STDL (Sistema de Tratamento de Dados e Localização) e consequentemente, para
+a antena. Dessa forma, o SIRIS torna-se essencial para o sucesso dos lançamentos de foguetes em
+Alcântara, proporcionando maior precisão e confiabilidade na identificação de sinais e coleta de
+informações.
